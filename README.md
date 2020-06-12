@@ -1,6 +1,7 @@
 # panos_ansible_iron_skillet
 
-A playbook to load iron skillet on a freshly deployed PAN-OS VM-Series
+A playbook to load IronSkillet on a freshly deployed PAN-OS VM-Series. For more information about IronSkillet, see
+the [IronSkillet documentation](https://iron-skillet.readthedocs.io/en/docs_master/overview.html).  
 
 You will need the paloaltonetworks.panos and paloaltonetworks.skillet collections installed
 

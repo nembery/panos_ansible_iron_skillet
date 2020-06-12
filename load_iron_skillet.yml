@@ -36,18 +36,26 @@
       delay: 60
 
     - set_fact: system_info_json="{{ system_info.stdout | from_json }}"
+
     - set_fact:
         sw_version: "{{ system_info_json.response.result.system['sw-version'] }}"
+
+    - set_fact:
         FW_NAME: "{{ system_info_json.response.result.system['hostname'] }}"
         MGMT_TYPE: "{{ 'dhcp-client' if (system_info_json.response.result.system['is-dhcp'] == 'yes') else 'static' }}"
         ADMINISTRATOR_USERNAME: "{{ username }}"
         ADMINISTRATOR_PASSWORD: "{{ password }}"
+    when: preserve_management == 'yes'
 
     - set_fact:
         MGMT_IP: "{{ system_info_json.response.result.system['ip-address'] }}"
         MGMT_MASK: "{{ system_info_json.response.result.system['netmask'] }}"
         MGMT_DG: "{{ system_info_json.response.result.system['default-gateway'] }}"
-      when: system_info_json.response.result.system['is-dhcp'] == 'no'
+      when: |
+        (
+          system_info_json.response.result.system['is-dhcp'] == 'no'
+          and preserver_management == 'yes'
+        )
 
     - name: Set 8.0 Branch
       set_fact:
