@@ -1,9 +1,9 @@
 ---
 # Initial connection information
-ip_address: '192.168.55.128'
+ip_address: '10.10.10.10'
 username: 'admin'
-password: 'Clouds1234!'
-auth_code: 'I5078001'
+password: 'admin'
+auth_code: 'IBADCODE'
 
 # Should IronSkillet preserve the currently configured management parameters?
 # These include management ip address, username, passwword, etc. Generally, this should be left to 'yes'
